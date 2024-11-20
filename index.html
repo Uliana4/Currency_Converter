@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Śledzenie Kursów Walut</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Śledzenie Kursów Walut</h1>
+        <ul class="nav nav-tabs" id="formTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="form1-tab" data-toggle="tab" href="#form1" role="tab" aria-controls="form1" aria-selected="true">Formularz 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="form2-tab" data-toggle="tab" href="#form2" role="tab" aria-controls="form2" aria-selected="false">Formularz 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="form3-tab" data-toggle="tab" href="#form3" role="tab" aria-controls="form3" aria-selected="false">Formularz 3</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="formTabContent">
+            <!-- Form 1 -->
+            <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
+                <form id="form1" class="mt-3">
+                    <div class="form-group">
+                        <label for="name">Imię:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Wpisz swoje imię" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Wpisz swój email" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numer telefonu:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Wpisz swój numer telefonu" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Wybierz walutę:</label>
+                        <select class="form-control" id="currency" name="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Data:</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Zapisz dane</button>
+                </form>
+            </div>
+
+            <!-- Form 2 -->
+            <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
+                <div id="savedData" class="mt-3">
+                    <h4>Wprowadzone dane:</h4>
+                    <ul id="dataList"></ul>
+                </div>
+            </div>
+
+            <!-- Form 3 -->
+            <div class="tab-pane fade" id="form3" role="tabpanel" aria-labelledby="form3-tab">
+                <h4>Kursy walut</h4>
+                <p>Aktualny kurs USD, EUR, GBP względem PLN:</p>
+                <div id="currencyRates"></div>
+                <button id="fetchRates" class="btn btn-secondary mt-3">Pobierz kursy</button>
+            
+                <h4 class="mt-4">Sprawdź kurs na wybraną datę:</h4>
+                <form id="historicalRateForm">
+                    <div class="form-group">
+                        <label for="historicalDate">Wybierz datę:</label>
+                        <input type="date" class="form-control" id="historicalDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currencySelect">Wybierz walutę:</label>
+                        <select class="form-control" id="currencySelect" required>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sprawdź kurs</button>
+                </form>
+            
+                <div id="historicalRate"></div>
+            
+                <h4 class="mt-4">Porównaj kursy walut:</h4>
+                <form id="compareRatesForm">
+                    <div class="form-group">
+                        <label for="startDate">Wybierz początkową datę:</label>
+                        <input type="date" class="form-control" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Wybierz końcową datę:</label>
+                        <input type="date" class="form-control" id="endDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Porównaj kursy</button>
+                </form>
+            
+                <div id="comparisonRates"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
